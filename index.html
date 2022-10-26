@@ -60,7 +60,7 @@
       <section class="hero">
         <div class="container">
           <h1 class="hero-title">Ефективні рішення для вашого бізнесу</h1>
-          <button class="button primary service" type="button">
+          <button class="button primary service" type="button" data-modal-open >
             Замовити послугу
           </button>
         </div>
@@ -124,21 +124,25 @@
           <h2 class="feature-list title">Чим ми займаємося</h2>
           <ul class="feature-list list">
             <li class="item">
-              <img src="./images/img1.jpg" alt="робота за ipad" width="370" />
+              <div class="feature-thumb">
+              <img class="feature-list icon" src="./images/img1.jpg" alt="робота за ipad" width="370" />
+            <p class="feature-text">Десктопні додатки</p>
+            </div>
             </li>
-            <li class="item">
-              <img
+            <li class="item"><div class="feature-thumb">
+              <img class="feature-list icon" 
                 src="./images/img2.jpg"
                 alt="робота за ноутбуком з телефоном"
                 width="370"
-              />
+              /><p class="feature-text">Мобільні додатки</p></div>
             </li>
             <li class="item">
-              <img
+              <div class="feature-thumb">
+              <img class="feature-list icon" 
                 src="./images/img3.jpg"
                 alt="кольорові соти на ipad"
                 width="370"
-              />
+              /><p class="feature-text">Дизайнерські рішення</p></div>
             </li>
           </ul>
         </div>
@@ -400,5 +404,13 @@
         </div>
       </div>
     </footer>
+    <div  class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button  class="close" type="button" data-modal-close>
+          <svg width="11" height="11"><use href="./images/icons.svg#icon-close"></use></svg>
+          </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>

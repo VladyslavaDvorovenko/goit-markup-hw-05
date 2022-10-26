@@ -60,8 +60,18 @@ body {
 }
 .link {
   text-decoration: none;
+  position: relative;
 }
-
+.link.current::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
 .header {
   background-color: var(--primary-white-color);
   border-bottom: 1px solid #ececec;
@@ -102,6 +112,7 @@ body {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .site-nav .link:hover,
 .site-nav .link:focus {
@@ -113,6 +124,7 @@ body {
 .address-header {
   display: flex;
   margin-left: auto;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   color: var(--primary-text-color);
   font-weight: 500;
@@ -124,6 +136,7 @@ body {
   fill: var(--primary-text-color);
   margin-right: 10px;
   align-self: center;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-header.icon.mail {
   width: 16px;
@@ -141,8 +154,13 @@ body {
 .address-header:focus {
   color: var(--accent-color);
 }
-.address-header:hover .icon,
-.address-header:focus .icon {
+.address-header:hover .tel,
+.address-header:focus .tel {
+  color: var(--accent-color);
+  fill: var(--accent-color);
+}
+.address-header:hover .mail,
+.address-header:focus .mail {
   color: var(--accent-color);
   fill: var(--accent-color);
 }
@@ -253,6 +271,30 @@ section {
 .feature-list .item:last-child {
   margin-right: 0px;
 }
+.feature-thumb {
+  position: relative;
+}
+.feature-thumb::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 370px;
+  height: 70px;
+  background: rgba(47, 48, 58, 0.8);
+}
+.feature-text {
+  position: absolute;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--primary-white-color);
+  padding-left: 107px;
+  bottom: 27px;
+  z-index: 1;
+}
 .text {
   margin-top: 0;
   margin-bottom: 0;
@@ -317,6 +359,7 @@ p {
   align-items: center;
   justify-content: center;
   fill: #afb1b8;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-link:hover,
 .social-link:focus {
@@ -343,6 +386,7 @@ p {
   align-items: center;
   justify-content: center;
   fill: #afb1b8;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover svg,
@@ -381,6 +425,7 @@ p {
 }
 .contact {
   color: var(--contact-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-footer .item {
   margin-bottom: 9px;
@@ -422,6 +467,7 @@ p {
   justify-content: center;
   fill: var(--primary-white-color);
   background: rgba(255, 255, 255, 0.1);
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-footer-link:hover,
 .social-footer-link:focus {
@@ -435,13 +481,53 @@ p {
 .footer-secondcolumn {
   margin-left: 70px;
 }
-
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.modal {
+  position: relative;
+  width: 528px;
+  height: 581px;
+  background-color: var(--primary-white-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-white-color);
+  fill: var(--black-logo-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .button.service {
   border: none;
   border-radius: 4px;
   padding: 10px 32px;
   min-width: 216px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
   font-family: "Roboto";
   font-style: normal;
@@ -452,6 +538,7 @@ p {
   color: var(--title-text-color);
   cursor: pointer;
   background-color: var(--btn-bcg-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button.portfolio {
   border-radius: 4px;
@@ -468,6 +555,7 @@ p {
   color: var(--title-text-color);
   cursor: pointer;
   background-color: var(--btn-bcg-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .buttons {
   display: flex;
@@ -485,6 +573,7 @@ p {
   color: var(--primary-white-color);
   background-color: var(--accent-color);
   cursor: pointer;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button.primary:hover,
@@ -517,8 +606,39 @@ p {
 .works.list > .item:nth-last-child(-n + 3) {
   margin-bottom: 94px;
 }
+.work-thumb {
+  position: relative;
+  overflow: hidden;
+}
+.work-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.works:hover .work-overlay {
+  transform: translateY(0);
+}
+.work-card-text {
+  position: absolute;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+
+  color: var(--primary-white-color);
+  padding-left: 24px;
+  padding-right: 24px;
+  bottom: 63px;
+  z-index: 1;
+}
 .works-card {
   display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .works-card:hover {
